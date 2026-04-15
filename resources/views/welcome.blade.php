@@ -140,6 +140,8 @@
         </div>
     </section>
 
+    
+
     <footer class="py-12 bg-gray-50 text-center border-t">
         <p class="text-gray-400 text-xs tracking-widest uppercase font-semibold">
             &copy; 2026 UKK Project - SMK Bisa!
