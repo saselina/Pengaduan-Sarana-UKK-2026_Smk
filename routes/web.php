@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Aspirasi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AspirasiController;
 
 Route::post('/kirim-aspirasi', function (Request $request) {
    $request->validate([

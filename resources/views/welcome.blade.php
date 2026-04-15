@@ -6,6 +6,9 @@
     <title>E-Pengaduan Siswa | UKK 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    @livewireStyles 
+
     <style>
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         .hero-gradient { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
@@ -51,6 +54,10 @@
     </section>
 
     <section id="lapor" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                
+                <section id="lapor" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="max-w-5xl mx-auto grid md:grid-cols-5 shadow-2xl rounded-[2.5rem] overflow-hidden border">
                 
@@ -140,13 +147,80 @@
         </div>
     </section>
 
-    
 
+
+    <div class="mb-16">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold text-gray-900">Statistik Pengaduan</h2>
+                        <p class="text-gray-500 mt-2">Data laporan yang masuk secara real-time dari database.</p>
+                    </div>
+                    <livewire:stat-counter />
+                </div>
+
+                <section id="publik" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Laporan Publik</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">
+                Berikut adalah laporan terbaru dari siswa yang telah masuk ke sistem kami.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach(\App\Models\Aspirasi::latest()->take(6)->get() as $item)
+            <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors"></div>
+                
+                <div class="relative">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold shadow-lg shadow-blue-200">
+                            {{ substr($item->nama, 0, 1) }}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 leading-tight">Laporan dari {{ $item->nama }}</h4>
+                            <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold mt-1">
+                                {{ $item->created_at->diffForHumans() }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-600 leading-relaxed text-sm mb-6 italic">
+                        "{{ Str::limit($item->ket, 150) }}"
+                    </p>
+
+                    <div class="flex items-center justify-between pt-6 border-t border-gray-50">
+                        <span class="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                            {{ $item->kategori->ket_kategori ?? 'Umum' }}
+                        </span>
+                        
+                        @if($item->status == 'selesai')
+                            <span class="flex items-center gap-1.5 text-green-500 font-bold text-xs">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Selesai
+                            </span>
+                        @else
+                            <span class="text-gray-400 font-bold text-xs uppercase tracking-tighter">Diproses</span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        @if(\App\Models\Aspirasi::count() > 6)
+        <div class="text-center mt-16">
+            <button class="px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-2xl font-bold hover:bg-blue-600 hover:text-white transition-all shadow-lg">
+                Lihat Semua Laporan
+            </button>
+        </div>
+        @endif
+    </div>
+</section>
     <footer class="py-12 bg-gray-50 text-center border-t">
         <p class="text-gray-400 text-xs tracking-widest uppercase font-semibold">
-            &copy; 2026 UKK Project - SMK Bisa!
+            &copy; 2026 UKK Project - Natty Maria Sasherlina!
         </p>
     </footer>
 
+    @livewireScripts
 </body>
 </html>
