@@ -3,68 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Aspirasi Siswa - UKK 2026</title>
+    <title>E-Pengaduan Siswa | UKK 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        /* Efek kaca transparan (Glassmorphism) */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-600 to-indigo-800 min-h-screen px-4 py-12">
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="container mx-auto max-w-5xl">
-        <div class="text-center mb-16 text-white">
-            <h1 class="text-4xl font-bold mb-3 drop-shadow-lg">Halo, Sobat Siswa! 👋</h1>
-            <p class="text-blue-100 text-lg">Punya keluhan fasilitas sekolah? Curhatin aja di sini!</p>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">P</div>
+                <span class="font-bold text-xl tracking-tight">Pengaduan Siswa</span>
+            </div>
+            <div class="hidden md:flex gap-8 font-medium text-gray-600">
+                <a href="#" class="hover:text-blue-600">Beranda</a>
+                <a href="#lapor" class="hover:text-blue-600">Tujuan</a>
+                <a href="/admin" class="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Login Guru</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="grid md:grid-cols-5 gap-10 items-start">
+    <section class="min-h-screen flex items-center pt-20 hero-gradient overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8 animate-fade-in">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                    Aplikasi <br><span class="text-blue-600">E-Pengaduan</span> Siswa
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+                    Platform yang didedikasikan untuk memfasilitasi siswa dalam menyampaikan keluhan, saran, dan masukan terkait lingkungan sekolah dengan lebih mudah dan efisien.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#lapor" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+                        Lapor Sekarang
+                    </a>
+                    <a href="/admin" class="px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-bold hover:bg-gray-50 transition-all">
+                        Portal Guru
+                    </a>
+                </div>
+            </div>
             
-            <div class="md:col-span-2 space-y-6">
-                <div class="glass-card p-8 rounded-3xl text-gray-800 shadow-2xl">
-                    <h3 class="font-bold text-2xl mb-4 text-blue-600">Kenapa Harus Lapor?</h3>
-                    <ul class="space-y-4 text-sm font-medium">
-                        <li class="flex items-center gap-3">✔ Menjaga kenyamanan sekolah</li>
-                        <li class="flex items-center gap-3">✔ Agar masalah yang ada bisa terselesaikan</li>
-                        <li class="flex items-center gap-3">✔ Identitas aman & rahasia</li>
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR7M0pU56r3NHlpA5KW6K4yytEJ4jT9KjjejY6kvxdBmNbLynENET1TRkwUQRqR" 
+     alt="Hero Image" 
+     class="w-full max-w-[500px] mx-auto drop-shadow-2xl">
+        </div>
+    </section>
+
+    <section id="lapor" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-5 gap-0 shadow-2xl rounded-[2.5rem] overflow-hidden border">
+                
+                <div class="md:col-span-2 bg-blue-600 p-10 text-white flex flex-col justify-center">
+                    <h3 class="font-bold text-3xl mb-6">Kenapa Harus Lapor?</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="bg-blue-500 p-1 rounded-full text-xs">✔</span>
+                            <p class="font-light">Menjaga kenyamanan belajar di lingkungan sekolah.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="bg-blue-500 p-1 rounded-full text-xs">✔</span>
+                            <p class="font-light">Respon cepat langsung dari admin sekolah.</p>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="bg-blue-500 p-1 rounded-full text-xs">✔</span>
+                            <p class="font-light">Identitas kamu aman dan bersifat rahasia.</p>
+                        </li>
                     </ul>
                 </div>
-                
-                <a href="/admin" class="group block text-center py-4 bg-white/10 hover:bg-white/20 border border-white/50 rounded-2xl transition-all font-semibold italic shadow-lg">
-                    <span class="group-hover:mr-3 transition-all">Login Admin (Guru)</span> →
-                </a>
-            </div>
 
-            <div class="md:col-span-3 glass-card rounded-[2rem] shadow-2xl overflow-hidden">
-                <div class="bg-white/80 p-8">
-                    
-                    {{-- Alert Notifikasi Sukses yang sudah jalan tadi --}}
+                <div class="md:col-span-3 p-10 bg-white">
                     @if(session('success'))
-                        <div class="mb-6 p-4 bg-green-500 text-white rounded-2xl shadow-lg text-center font-bold animate-pulse">
-                            {{ session('success') }} 🎉
+                        <div class="mb-6 p-4 bg-green-100 text-green-700 border-l-4 border-green-500 rounded-r-xl">
+                            <b>Berhasil!</b> {{ session('success') }}
                         </div>
                     @endif
 
-                    <form action="/kirim-aspirasi" method="POST" class="space-y-6">
+                    <form action="/kirim-aspirasi" method="POST" class="space-y-5">
                         @csrf
-                        
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">NIS Kamu</label>
-                            <input type="text" name="nis" maxlength="10" required 
-                                   oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                   class="w-full px-5 py-3 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none" 
-                                   placeholder="Masukkan 10 digit NIS...">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="col-span-2">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">NIS</label>
+                                <input type="text" name="nis" maxlength="10" required 
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                    class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all" 
+                                    placeholder="10 digit NIS...">
+                            </div>
                         </div>
 
+
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Pilih Kategori</label>
-                            <select name="kategori_id" required class="w-full px-5 py-3 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 outline-none cursor-pointer">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">NAMA KAMU</label>
+                            <input type="text" name="lokasi" required 
+                                class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" 
+                                placeholder="Nama/Panggilan">
+                        </div>
+
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Kategori Laporan</label>
+                            <select name="kategori_id" required class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="" disabled selected>Pilih Kategori...</option>
                                 @foreach(\App\Models\Kategori::all() as $kat)
                                     <option value="{{ $kat->id }}">{{ $kat->ket_kategori }}</option>
                                 @endforeach
@@ -72,33 +114,34 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Dimana Kejadiannya?</label>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Lokasi Yang Ingin Dilaporkan</label>
                             <input type="text" name="lokasi" required 
-                                   class="w-full px-5 py-3 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 outline-none" 
-                                   placeholder="Contoh: Kamar Mandi Lt. 2 atau Ruang Lab">
+                                class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" 
+                                placeholder="Contoh: Lab Komputer, Kantin, dll">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2 ml-1">Apa Yang Mau Dilaporin?</label>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Detail Laporan</label>
                             <textarea name="ket" rows="4" required 
-                                      class="w-full px-5 py-3 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-blue-500 outline-none" 
-                                      placeholder="Jelasin sedetail mungkin ya..."></textarea>
+                                class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" 
+                                placeholder="Ceritakan apa yang terjadi..."></textarea>
                         </div>
 
                         <button type="submit" 
-                                class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 rounded-2xl shadow-xl transform active:scale-95 transition-all duration-200">
-                            Kirim Laporan Sekarang! 🚀
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98]">
+                            Kirim Laporan Sekarang 🚀
                         </button>
                     </form>
                 </div>
             </div>
-
         </div>
+    </section>
 
-        <p class="text-center text-blue-200/50 mt-16 text-sm uppercase tracking-widest font-semibold">
-            &copy; 2026 UKK - Vocational Project
+    <footer class="py-12 bg-gray-50 text-center border-t">
+        <p class="text-gray-400 text-sm tracking-widest uppercase font-semibold">
+            &copy; 2026 UKK Vocational Project - SMK Bisa!
         </p>
-    </div>
+    </footer>
 
 </body>
 </html>
