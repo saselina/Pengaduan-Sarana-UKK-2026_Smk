@@ -8,18 +8,26 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
-           'name' => 'Admin Sekolah',
-        'email' => 'admin@gmail.com',
-        'password' => bcrypt('password'),
-        'role' => 'admin',
+            'name' => 'Admin Sekolah',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin',
+        ]);
+
+       
+        \App\Models\Kategori::create([
+            'ket_kategori' => 'Sarana & Prasarana',
+        ]);
+
+        \App\Models\Kategori::create([
+            'ket_kategori' => 'Kebersihan Lingkungan',
+        ]);
+
+        \App\Models\Kategori::create([
+            'ket_kategori' => 'Keamanan Sekolah',
         ]);
     }
 }

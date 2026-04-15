@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AspirasiResource\Pages;
-use App\Filament\Resources\AspirasiResource\RelationManagers;
 use App\Models\Aspirasi;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AspirasiResource extends Resource
 {
@@ -23,7 +20,15 @@ class AspirasiResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nis')->disabled(),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'Menunggu' => 'Menunggu',
+                        'Proses' => 'Proses',
+                        'Selesai' => 'Selesai',
+                    ])->required(),
+                Forms\Components\Textarea::make('feedback')
+                    ->placeholder('Berikan jawaban atau tanggapan...'),
             ]);
     }
 
@@ -31,11 +36,29 @@ class AspirasiResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nis')
+                    ->label('NIS')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kategori.ket_kategori') 
+                    ->label('Kategori')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('lokasi')
+                    ->label('Lokasi'),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge() 
+                    ->color(fn (string $state): string => match ($state) {
+                        'Menunggu' => 'gray',
+                        'Proses' => 'warning',
+                        'Selesai' => 'success',
+                        default => 'gray',
+                    }),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Tanggal')
+                    ->dateTime()
+                    ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -48,9 +71,7 @@ class AspirasiResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

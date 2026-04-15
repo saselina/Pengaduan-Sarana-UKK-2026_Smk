@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+// Pastikan namanya "CreateAspirasisTable" (pakai Huruf Kapital di setiap awal kata)
+class CreateAspirasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('aspirasis', function (Blueprint $table) {
-        
             $table->id('id_aspirasi');
-            $table->integer('nis', 10);
+            $table->string('nis', 10);
             $table->foreignId('kategori_id')->constrained('kategoris'); 
             $table->string('lokasi', 50);
             $table->text('ket');
@@ -31,4 +31,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('aspirasis');
     }
-};
+}
